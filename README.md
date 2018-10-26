@@ -15,4 +15,4 @@ The pull request is open and I'll prob going to accept some of ur PR(s) if only 
 and for the plugin (e.g, updating the java docs, or updating the code)
 
 # And...
-I'm planning on making this project open source in the future, but I need 100 or 200 buyers on my spigot page. Why?, I don't really need money, I'm making this as an Hobby and I don't really care about how much will I got (Thats why I'm making the price cheap 5$), I'm literally 15 years old. So making money is not my number 1 priority
+I'm planning on making this project open source in the future, after I got like 100 or 200 buyers. This is just a plan and I'm not sure if I'm going to do it or not. Just wait for it :D
