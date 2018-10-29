@@ -2,6 +2,8 @@ package me.droreo002.advancedanimatorapi.manager;
 
 import me.droreo002.advancedanimator.AdvancedAnimator;
 import me.droreo002.advancedanimator.database.AnimationData;
+import me.droreo002.advancedanimator.enums.LangEnum;
+import me.droreo002.advancedanimator.enums.LogType;
 import me.droreo002.advancedanimator.objects.Animation;
 import me.droreo002.advancedanimator.utils.CommonUtils;
 import org.apache.commons.lang.Validate;
@@ -112,7 +114,7 @@ public final class AnimationManager {
     public static void init() {
         File dir = new File(AdvancedAnimator.getInstance().getDataFolder(), "animations");
         if (dir.listFiles() == null) {
-            System.out.println(AdvancedAnimator.getInstance().getConsolePrefix() + "There's no animation available. Cancelling animation initialization");
+            LangEnum.sendMessageToConsole("There's no animation available. Cancelling animation initialization", LogType.WARNING);
             return;
         }
         long startTime = System.currentTimeMillis();
@@ -124,6 +126,6 @@ public final class AnimationManager {
         System.out.println("=================== Animation Loader ===================");
         System.out.println(" ");
         long endTime = System.currentTimeMillis();
-        System.out.println("Animation loader finished at " + (endTime - startTime) + " ms!");
+        LangEnum.sendMessageToConsole("Animation loader finished at " + (endTime - startTime) + " ms!", LogType.INFO);
     }
 }
