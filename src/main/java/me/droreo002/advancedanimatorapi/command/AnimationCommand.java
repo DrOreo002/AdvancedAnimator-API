@@ -10,7 +10,7 @@ import org.bukkit.entity.Player;
 public abstract class AnimationCommand {
 
     private String activator;
-    private boolean playerOnly;
+    private boolean consoleOnly;
     private boolean usePermission;
     private String permission;
 
@@ -18,16 +18,21 @@ public abstract class AnimationCommand {
         this.activator = activator;
     }
 
-    public void register() {
+    /**
+     * Register the command
+     *
+     * @param addToTabCompleter : If this true then the activator will be added to the tab completer,
+     *                          will not be added if false.
+     */
+    public void register(boolean addToTabCompleter) {
         CommandManager.addCommand(this);
+        if (addToTabCompleter) {
+            CommandManager.addTabComplete(activator);
+        }
     }
 
     public void setActivator(String activator) {
         this.activator = activator;
-    }
-
-    public void setPlayerOnly(boolean playerOnly) {
-        this.playerOnly = playerOnly;
     }
 
     public void setUsePermission(boolean usePermission) {
@@ -42,10 +47,6 @@ public abstract class AnimationCommand {
         return activator;
     }
 
-    public boolean isPlayerOnly() {
-        return playerOnly;
-    }
-
     public boolean isUsePermission() {
         return usePermission;
     }
@@ -54,13 +55,37 @@ public abstract class AnimationCommand {
         return permission;
     }
 
+    public boolean isConsoleOnly() {
+        return consoleOnly;
+    }
+
+    public void setConsoleOnly(boolean consoleOnly) {
+        this.consoleOnly = consoleOnly;
+    }
+
+    /**
+     * The method to be called by the {@link CommandManager}
+     *
+     * @param sender : The command sender
+     * @param args : The current command argument
+     */
     public abstract void execute(CommandSender sender, String[] args);
 
+    /**
+     * Play the success sound that is specified on the config to the player
+     *
+     * @param player : The targeted player
+     */
     public void success(Player player) {
         ConfigManager config = AdvancedAnimator.getInstance().getConfigManager();
         CommonUtils.convertFromString(config.getCommandSuccessSound()).play(player);
     }
 
+    /**
+     * Play the error sound that is specified on the config to the player
+     *
+     * @param player : The targeted player
+     */
     public void error(Player player) {
         ConfigManager config = AdvancedAnimator.getInstance().getConfigManager();
         CommonUtils.convertFromString(config.getCommandFailureSound()).play(player);

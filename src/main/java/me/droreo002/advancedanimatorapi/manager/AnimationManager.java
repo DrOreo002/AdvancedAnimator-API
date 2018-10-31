@@ -59,7 +59,8 @@ public final class AnimationManager {
     }
 
     /**
-     * Get the animation from the hasmap with the key of {@param name}
+     * Get the animation from the hashmap with the key of name
+     *
      * @param name : The name of the animation
      * @return : {@see Animation} if contains or null if not
      */
